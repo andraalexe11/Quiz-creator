@@ -20,38 +20,8 @@ import java.util.Iterator;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
-    static Irepository<tort> repotort = new Irepository<tort>() {
-        @Override
-        public void add(tort elem) throws RepositoryException, SQLException {
+    static Irepository<tort> repotort = null;
 
-        }
-
-        @Override
-        public void remove(int id) throws RepositoryException {
-
-        }
-
-        @Override
-        public tort find(int id) {
-            return null;
-        }
-
-        @Override
-        public ArrayList<tort> getAll() throws SQLException {
-            return null;
-        }
-
-        @Override
-        public void update(int idvechi, tort comandanoua) throws IOException {
-
-        }
-
-        @NotNull
-        @Override
-        public Iterator<tort> iterator() {
-            return null;
-        }
-    };
     static Irepository<comanda> repocomanda = null;
     static tortConverter tortConverter = new tortConverter();
     static comandaConverter comandaConverter = new comandaConverter();
