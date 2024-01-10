@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.lab4good.CofetarieController"
+            prefHeight="400.0" prefWidth="600.0">
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0">
+            <tabs>
+                <Tab text="Adaugare">
+                    <TabPane prefHeight="180.0" prefWidth="300.0">
+                        <tabs>
+                            <Tab text="Adauga Tort">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Adaugare Tort"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="tortIdField" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="TIP:"/>
+                                        <TextField fx:id="tortTipField" promptText="Introduceti tipul"/>
+                                    </HBox>
+                                    <Button onAction="#handleAddTort" text="Adauga tort"/>
+                                </VBox>
+
+                            </Tab>
+                            <Tab text="Adauga Comanda">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Adaugare Comanda"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="comandaIdField" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="DATA:"/>
+                                        <TextField fx:id="comandaDataField" promptText="Introduceti data"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="TORTURI:"/>
+                                        <TextField fx:id="comandaTorturiField" promptText="Introduceti torturile(id,tip;)"/>
+                                    </HBox>
+                                    <Button onAction="#handleAddComanda" text="Adauga comanda"/>
+                                </VBox>
+
+                            </Tab>
+                        </tabs>
+
+                    </TabPane>
+
+                </Tab>
+                <Tab text="Stergere">
+                    <TabPane prefHeight="180.0" prefWidth="300.0">
+                        <tabs>
+                            <Tab text="Sterge Tort">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Stergere Tort"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="stergetortIDfield" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <Button onAction="#handleDeleteTort" text="Sterge tort"/>
+                                </VBox>
+
+                            </Tab>
+                            <Tab text="Sterge Comanda">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Stergere Comanda"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="stergecomandaIDfield" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <Button onAction="#handleDeleteComanda" text="Sterge comanda"/>
+                                </VBox>
+
+                            </Tab>
+                        </tabs>
+
+                    </TabPane>
+
+                </Tab>
+                <Tab text="Actualizare">
+                    <TabPane prefHeight="180.0" prefWidth="300.0">
+                        <tabs>
+                            <Tab text="Actualizare Tort">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Actualizare Tort"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="updatetorttIdfield" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="TIP NOU:"/>
+                                        <TextField fx:id="updatetortnewtipfield" promptText="Introduceti noul tip"/>
+                                    </HBox>
+                                    <Button onAction="#handleUpdateTort" text="Actualizeaza tort"/>
+                                </VBox>
+
+                            </Tab>
+                            <Tab text="Actualizeaza Comanda">
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label text="Formular Actualizare Comanda"/>
+                                    <HBox>
+                                        <Label text="ID:"/>
+                                        <TextField fx:id="updatecomandaIDfield" promptText="Introduceti id-ul"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="DATA NOUA:"/>
+                                        <TextField fx:id="updatecomandanewdatafield" promptText="Introduceti noua data"/>
+                                    </HBox>
+                                    <HBox>
+                                        <Label text="TORTURI NOI:"/>
+                                        <TextField fx:id="updatecomandanewtorturifield" promptText="Introduceti noile torturi"/>
+                                    </HBox>
+                                    <Button onAction="#handleUpdateComanda" text="Actualizeaza comanda"/>
+                                </VBox>
+
+                            </Tab>
+                        </tabs>
+
+                    </TabPane>
+
+                </Tab>
+                <Tab text="Afisare">
+                    <TabPane prefHeight="180.0" prefWidth="200.0">
+                        <tabs>
+                            <Tab text="Afisare Torturi">
+                                <VBox>
+                                    <TableView fx:id="tableViewTort" prefHeight="600">
+                                        <columns>
+                                            <TableColumn fx:id="tableColumnIdtort" prefWidth="75.0" text="Id"/>
+                                            <TableColumn fx:id="tableColumnTiptort" prefWidth="75.0" text="Tip"/>
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </VBox>
+
+                            </Tab>
+                            <Tab text="Afisare Comenzi">
+                                <VBox>
+                                    <TableView fx:id="tableViewcomanda" prefHeight="600">
+                                        <columns>
+                                            <TableColumn fx:id="tableColumnIdcomanda" prefWidth="75.0" text="Id"/>
+                                            <TableColumn fx:id="tableColumnDatacomanda" prefWidth="75.0" text="Data"/>
+                                            <TableColumn fx:id="tableColumnTorturicomanda" prefWidth="75.0" text="Torturi"/>
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </VBox>
+
+                            </Tab>
+                        </tabs>
+                    </TabPane>
+
+                </Tab>
+
+            </tabs>
+
+        </TabPane>
+    </center>
+</BorderPane>
