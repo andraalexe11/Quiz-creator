@@ -36,15 +36,15 @@
                                     <Label text="Formular Adaugare Comanda"/>
                                     <HBox>
                                         <Label text="ID:"/>
-                                        <TextField fx:id="comandaIdField" promptText="Introduceti id-ul"/>
+                                        <TextField fx:id="comandaIdField" promptText="1,2,..."/>
                                     </HBox>
                                     <HBox>
                                         <Label text="DATA:"/>
-                                        <TextField fx:id="comandaDataField" promptText="Introduceti data"/>
+                                        <TextField fx:id="comandaDataField" promptText="dd/mm/yyyy"/>
                                     </HBox>
                                     <HBox>
                                         <Label text="TORTURI:"/>
-                                        <TextField fx:id="comandaTorturiField" promptText="Introduceti torturile(id,tip;)"/>
+                                        <TextField fx:id="comandaTorturiField" promptText="id1,tip1;id2,tip2;..."/>
                                     </HBox>
                                     <Button onAction="#handleAddComanda" text="Adauga comanda"/>
                                 </VBox>
@@ -162,6 +162,52 @@
                         </tabs>
                     </TabPane>
 
+                </Tab>
+                <Tab text="Rapoarte">
+                    <TabPane prefHeight="180.0" prefWidth="200.0">
+                        <tabs>
+                            <Tab text="Torturi Comandate Zilnic">
+                                <VBox>
+                                    <TableView fx:id="tableViewtortzilnic" prefHeight="600">
+                                        <columns>
+                                            <TableColumn fx:id="tableColumndate" prefWidth="75.0" text="Ziua"/>
+                                            <TableColumn fx:id="nrTorturi" prefWidth="75.0" text="Numar Torturi"/>
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </VBox>
+                            </Tab>
+                            <Tab text="Torturi Comandate Lunar">
+                                <VBox>
+                                    <TableView fx:id="tableViewtortlunar" prefHeight="600">
+                                        <columns>
+                                            <TableColumn fx:id="tableColumnnrlunar" prefWidth="75.0" text="Numar"/>
+                                            <TableColumn fx:id="tableColumnluna" prefWidth="75.0" text="Luna"/>
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </VBox>
+                            </Tab>
+                            <Tab text="Torturi Comandate Frecvent">
+                                <VBox>
+                                    <TableView fx:id="tableViewtortfrecvent" prefHeight="600">
+                                        <columns>
+                                            <TableColumn fx:id="idtortfrecvent" prefWidth="75.0" text="ID"/>
+                                            <TableColumn fx:id="tiptortfrecvent" prefWidth="75.0" text="Tipul"/>
+                                            <TableColumn fx:id="nrcomenzitorturifrecvente" prefWidth="75.0" text="Numar comenzi"/>
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </VBox>
+                            </Tab>
+                        </tabs>
+                    </TabPane>
                 </Tab>
 
             </tabs>

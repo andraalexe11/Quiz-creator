@@ -34,9 +34,9 @@ public class MemoryRepository <T extends entity> extends AbstractRepository<T> {
     }
 
     public ArrayList<T> getAll() throws SQLException {
-        if(this.list1.isEmpty()){
-            throw new RuntimeException("The list is empty!");
-        }
+       // if(this.list1.isEmpty()){
+      //      throw new RuntimeException("The list is empty!");
+      //  }
         return this.list1;
     }
 

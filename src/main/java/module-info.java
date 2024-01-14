@@ -12,6 +12,7 @@ module com.example.lab4good {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires annotations;
+    requires org.xerial.sqlitejdbc;
 
     opens com.example.lab4good to javafx.fxml;
     exports com.example.lab4good;

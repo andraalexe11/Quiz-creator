@@ -1,7 +1,6 @@
 package com.example.lab4good;
 
-import com.example.lab4good.domain.comanda;
-import com.example.lab4good.domain.tort;
+import com.example.lab4good.domain.*;
 import com.example.lab4good.repository.RepositoryException;
 import javafx.application.Application;
 import javafx.application.Application;
@@ -47,6 +46,32 @@ public class CofetarieController extends Application {
     @FXML
     TableColumn<comanda, String> tableColumnTorturicomanda;
 
+    //tabel raport torturi/zile
+    @FXML
+    TableView<TorturiZilnic> tableViewtortzilnic;
+    @FXML
+    TableColumn<TorturiZilnic, String> tableColumndate;
+    @FXML
+    TableColumn<TorturiZilnic, String> nrTorturi;
+
+    //tabel raport torturi/luni
+    @FXML
+    TableView<TorturiLunar> tableViewtortlunar;
+    @FXML
+    TableColumn<TorturiLunar, String> tableColumnluna;
+    @FXML
+    TableColumn<TorturiLunar, String> tableColumnnrlunar;
+    //tabel raport
+    @FXML
+    TableView<TorturiFrecvente> tableViewtortfrecvent;
+    @FXML
+    TableColumn<TorturiFrecvente, String> idtortfrecvent;
+    @FXML
+    TableColumn<TorturiFrecvente, String> tiptortfrecvent;
+    @FXML
+    TableColumn<TorturiFrecvente, String> nrcomenzitorturifrecvente;
+
+
     //Adaugare tort
 
     @FXML
@@ -91,8 +116,9 @@ public class CofetarieController extends Application {
 
     ObservableList<tort> modelTort = FXCollections.observableArrayList();
     ObservableList<comanda> modelComanda = FXCollections.observableArrayList();
-
-
+    ObservableList<TorturiZilnic> modeltorturizilnic = FXCollections.observableArrayList();
+    ObservableList<TorturiLunar> modeltorturilunar = FXCollections.observableArrayList();
+    ObservableList<TorturiFrecvente> modeltorturifrecvente = FXCollections.observableArrayList();
     public void setService(servicecomanda servicecomanda, servicetort servicetort){
         this.servicecomanda = servicecomanda;
         this.servicetort = servicetort;
@@ -107,8 +133,21 @@ public class CofetarieController extends Application {
 
             tableColumnIdcomanda.setCellValueFactory(new PropertyValueFactory<comanda, String>("Id"));
             tableColumnDatacomanda.setCellValueFactory(new PropertyValueFactory<comanda, String>("Data"));
-            tableColumnTorturicomanda.setCellValueFactory(new PropertyValueFactory<comanda, String>("Torturi(id,tip;)"));
+            tableColumnTorturicomanda.setCellValueFactory(new PropertyValueFactory<comanda, String>("Torturi"));
             tableViewcomanda.setItems(modelComanda);
+
+            tableColumndate.setCellValueFactory(new PropertyValueFactory<TorturiZilnic, String>("Ziua"));
+            nrTorturi.setCellValueFactory(new PropertyValueFactory<TorturiZilnic, String>("Nrtorturi"));
+            tableViewtortzilnic.setItems(modeltorturizilnic);
+
+            tableColumnluna.setCellValueFactory(new PropertyValueFactory<TorturiLunar, String>("Luna"));
+            tableColumnnrlunar.setCellValueFactory(new PropertyValueFactory<TorturiLunar, String>("Nrtorturi"));
+            tableViewtortlunar.setItems(modeltorturilunar);
+
+            idtortfrecvent.setCellValueFactory(new PropertyValueFactory<TorturiFrecvente, String>("Id"));
+            tiptortfrecvent.setCellValueFactory(new PropertyValueFactory<TorturiFrecvente, String>("Tip"));
+            nrcomenzitorturifrecvente.setCellValueFactory(new PropertyValueFactory<TorturiFrecvente, String>("Nrcomenzi"));
+            tableViewtortfrecvent.setItems(modeltorturifrecvente);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -121,7 +160,23 @@ public class CofetarieController extends Application {
         } catch (RepositoryException e) {
             throw new RuntimeException(e);
         }
+        try {
+            modeltorturizilnic.setAll(servicecomanda.countdailycakes());
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            modeltorturilunar.setAll(servicecomanda.countmonthlycakes());
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            modeltorturifrecvente.setAll(servicecomanda.frequentcakes());
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     public void onHelloButtonClick(ActionEvent actionEvent) {
         welcomeText.relocate(100,100);
@@ -132,11 +187,8 @@ public class CofetarieController extends Application {
         try {
             int id = Integer.parseInt(tortIdField.getText());
             String tip = tortTipField.getText();
-            try {
-                servicetort.add(id, tip);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            servicetort.add(id, tip);
+
             initialize();
             initModel();
 
@@ -147,7 +199,17 @@ public class CofetarieController extends Application {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         } catch (RepositoryException e) {
-            throw new RuntimeException(e);
+           Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Adaugare tort");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        } catch (SQLException e) {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Adaugare tort");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
         tortIdField.clear();
         tortTipField.clear();
@@ -260,6 +322,8 @@ public class CofetarieController extends Application {
         updatecomandanewtorturifield.clear();
 
     }
+
+
 
     @Override
     public void start(Stage stage) throws Exception {

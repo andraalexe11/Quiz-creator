@@ -1,1 +1,1 @@
-repotype: memory
+repo_type: db

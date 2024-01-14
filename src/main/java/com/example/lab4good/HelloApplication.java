@@ -2,9 +2,7 @@ package com.example.lab4good;
 
 import com.example.lab4good.domain.*;
 import com.example.lab4good.domain.tort;
-import com.example.lab4good.repository.Irepository;
-import com.example.lab4good.repository.MemoryRepository;
-import com.example.lab4good.repository.RepositoryException;
+import com.example.lab4good.repository.*;
 import com.example.lab4good.service.servicecomanda;
 import com.example.lab4good.service.servicetort;
 import javafx.application.Application;
@@ -27,7 +25,7 @@ public class HelloApplication extends Application {
     static comandaConverter comandaConverter = new comandaConverter();
     static Settings settings = Settings.getInstance();
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tort-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("COFETARIE");
@@ -37,6 +35,31 @@ public class HelloApplication extends Application {
             repotort = new MemoryRepository<tort>();
             repocomanda = new MemoryRepository<comanda>();
         }
+        if(Objects.equals(settings.getRepoType(),"text")){
+            /*
+            repo_type: text
+            repo_file1: C:\Users\Alexe Andra\Documents\Java\Lab4Good\src\main\java\com\example\lab4good\torturi.txt
+            repo_file2: C:\Users\Alexe Andra\Documents\Java\Lab4Good\src\main\java\com\example\lab4good\comenzi.txt
+             */
+            repotort = new TextFileRepository<tort>(settings.getRepoFile1(), tortConverter);
+            repocomanda = new TextFileRepository<comanda>(settings.getRepoFile2(), comandaConverter);
+
+        }
+
+        if(Objects.equals(settings.getRepoType(), "bin")){
+            /*repo_type: bin
+            repo_file1: C:\\Users\\Alexe Andra\\Documents\\Java\\Lab4Good\\src\\main\\java\\com\\example\\lab4good\\torturi.bin
+            repo_file2: C:\\Users\\Alexe Andra\\Documents\\Java\\Lab4Good\\src\\main\\java\\com\\example\\lab4good\\comenzi.bin
+             */
+            repotort = new BinaryFileRepository<tort>(settings.getRepoFile1());
+            repocomanda = new BinaryFileRepository<comanda>(settings.getRepoFile2());
+        }
+        if (Objects.equals(settings.getRepoType(), "db")) {
+            repotort = new SQLrepositorytort();
+            repocomanda = new SQLrepositorycomanda();
+
+        }
+
         servicetort servicetort = new servicetort(repotort);
         servicecomanda servicecomanda = new servicecomanda(repocomanda);
 

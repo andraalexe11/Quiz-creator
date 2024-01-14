@@ -65,4 +65,14 @@ public class TextFileRepository<T extends entity> extends MemoryRepository<T> {
         super.update(id, newelem);
         saveFile();
     }
+
+    @Override
+    public void remove(int id) throws RepositoryException {
+        super.remove(id);
+        try {
+            saveFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

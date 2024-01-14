@@ -37,7 +37,7 @@ public class comanda extends entity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.lab4.domain.comanda{" +
+        return "comanda{" +
                 "data=" + data +
                 ",torturi=" + torturi +
                 '}';

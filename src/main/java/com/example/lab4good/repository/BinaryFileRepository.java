@@ -15,8 +15,7 @@ public class BinaryFileRepository<T extends entity> extends MemoryRepository<T> 
         try {
             loadFile();
         } catch (IOException | ClassNotFoundException e) {
-            // not very good practice
-            throw new RuntimeException(e);
+           throw new RuntimeException(e);
         }
     }
 
@@ -35,6 +34,17 @@ public class BinaryFileRepository<T extends entity> extends MemoryRepository<T> 
     @Override
     public void remove(int id) throws RepositoryException {
         super.remove(id);
+        try {
+            saveFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(int id, T newelem) throws IOException {
+        super.update(id, newelem);
+        saveFile();
     }
 
     private void loadFile() throws IOException, ClassNotFoundException {

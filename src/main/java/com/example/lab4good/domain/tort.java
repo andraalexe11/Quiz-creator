@@ -1,6 +1,7 @@
 package com.example.lab4good.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class tort extends entity implements Serializable {
     private String tip;
@@ -18,8 +19,20 @@ public class tort extends entity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.lab4.domain.tort{" +"id=" + getId() +
+        return "id=" + getId() +
                 ",tip=" + tip +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof tort tort)) return false;
+        return Objects.equals(getTip(), tort.getTip());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTip());
     }
 }
