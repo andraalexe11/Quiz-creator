@@ -65,7 +65,8 @@ public class HelloApplication extends Application {
 
         CofetarieController cofetarieController = fxmlLoader.getController();
         cofetarieController.setService(servicecomanda, servicetort);
-
+       //ui ui = new ui(servicetort, servicecomanda);
+       //ui.menu();
     }
 
     public static void main(String[] args) {
