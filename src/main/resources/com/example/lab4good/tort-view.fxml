@@ -9,16 +9,16 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.lab4good.CofetarieController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0" style="-fx-text-fill: #FFFFFF" >
     <center>
-        <TabPane prefHeight="200.0" prefWidth="200.0">
+        <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #702EFE; -fx-font-family: 'Britannic Bold'; -fx-text-fill: #FFFFFF " >
             <tabs>
-                <Tab text="Adaugare">
+                <Tab text="Adaugare" style="-fx-background-color: #9679D5" >
                     <TabPane prefHeight="180.0" prefWidth="300.0">
                         <tabs>
-                            <Tab text="Adauga Tort">
+                            <Tab text="Adauga Tort" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
-                                    <Label text="Formular Adaugare Tort"/>
+                                    <Label text="Formular Adaugare Tort" />
                                     <HBox>
                                         <Label text="ID:"/>
                                         <TextField fx:id="tortIdField" promptText="Introduceti id-ul"/>
@@ -31,7 +31,7 @@
                                 </VBox>
 
                             </Tab>
-                            <Tab text="Adauga Comanda">
+                            <Tab text="Adauga Comanda" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
                                     <Label text="Formular Adaugare Comanda"/>
                                     <HBox>
@@ -55,10 +55,10 @@
                     </TabPane>
 
                 </Tab>
-                <Tab text="Stergere">
+                <Tab text="Stergere" style="-fx-background-color: #9679D5">
                     <TabPane prefHeight="180.0" prefWidth="300.0">
                         <tabs>
-                            <Tab text="Sterge Tort">
+                            <Tab text="Sterge Tort" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
                                     <Label text="Formular Stergere Tort"/>
                                     <HBox>
@@ -69,7 +69,7 @@
                                 </VBox>
 
                             </Tab>
-                            <Tab text="Sterge Comanda">
+                            <Tab text="Sterge Comanda" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
                                     <Label text="Formular Stergere Comanda"/>
                                     <HBox>
@@ -85,10 +85,10 @@
                     </TabPane>
 
                 </Tab>
-                <Tab text="Actualizare">
-                    <TabPane prefHeight="180.0" prefWidth="300.0">
+                <Tab text="Actualizare" style="-fx-background-color: #9679D5">
+                    <TabPane prefHeight="180.0" prefWidth="300.0" >
                         <tabs>
-                            <Tab text="Actualizare Tort">
+                            <Tab text="Actualizare Tort" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
                                     <Label text="Formular Actualizare Tort"/>
                                     <HBox>
@@ -103,7 +103,7 @@
                                 </VBox>
 
                             </Tab>
-                            <Tab text="Actualizeaza Comanda">
+                            <Tab text="Actualizeaza Comanda" style="-fx-background-color: #9679D5">
                                 <VBox alignment="CENTER" spacing="10">
                                     <Label text="Formular Actualizare Comanda"/>
                                     <HBox>
@@ -127,10 +127,10 @@
                     </TabPane>
 
                 </Tab>
-                <Tab text="Afisare">
+                <Tab text="Afisare" style="-fx-background-color: #9679D5">
                     <TabPane prefHeight="180.0" prefWidth="200.0">
                         <tabs>
-                            <Tab text="Afisare Torturi">
+                            <Tab text="Afisare Torturi" style="-fx-background-color: #9679D5">
                                 <VBox>
                                     <TableView fx:id="tableViewTort" prefHeight="600">
                                         <columns>
@@ -144,7 +144,7 @@
                                 </VBox>
 
                             </Tab>
-                            <Tab text="Afisare Comenzi">
+                            <Tab text="Afisare Comenzi" style="-fx-background-color: #9679D5">
                                 <VBox>
                                     <TableView fx:id="tableViewcomanda" prefHeight="600">
                                         <columns>
@@ -163,10 +163,10 @@
                     </TabPane>
 
                 </Tab>
-                <Tab text="Rapoarte">
+                <Tab text="Rapoarte" style="-fx-background-color: #9679D5">
                     <TabPane prefHeight="180.0" prefWidth="200.0">
                         <tabs>
-                            <Tab text="Torturi Comandate Zilnic">
+                            <Tab text="Torturi Comandate Zilnic" style="-fx-background-color: #9679D5">
                                 <VBox>
                                     <TableView fx:id="tableViewtortzilnic" prefHeight="600">
                                         <columns>
@@ -179,7 +179,7 @@
                                     </TableView>
                                 </VBox>
                             </Tab>
-                            <Tab text="Torturi Comandate Lunar">
+                            <Tab text="Torturi Comandate Lunar" style="-fx-background-color: #9679D5">
                                 <VBox>
                                     <TableView fx:id="tableViewtortlunar" prefHeight="600">
                                         <columns>
@@ -192,7 +192,7 @@
                                     </TableView>
                                 </VBox>
                             </Tab>
-                            <Tab text="Torturi Comandate Frecvent">
+                            <Tab text="Torturi Comandate Frecvent" style="-fx-background-color: #9679D5">
                                 <VBox>
                                     <TableView fx:id="tableViewtortfrecvent" prefHeight="600">
                                         <columns>
